@@ -24,8 +24,7 @@ public class TennisGame4 implements TennisGame {
                 this, new GameServer(
                         this, new GameReceiver(
                                 this, new AdvantageServer(
-                                        this, new AdvantageReceiver(
-                                                this, new DefaultResult(this)))))).getResult();
+                                        this, new AdvantageReceiver(this))))).getResult();
         return result.format();
     }
 
@@ -145,9 +144,9 @@ class AdvantageReceiver implements ResultProvider {
     private final TennisGame4 game;
     private final ResultProvider nextResult;
 
-    public AdvantageReceiver(TennisGame4 game, ResultProvider nextResult) {
+    public AdvantageReceiver(TennisGame4 game) {
         this.game = game;
-        this.nextResult = nextResult;
+        this.nextResult = new DefaultResult(game);
     }
 
     @Override
