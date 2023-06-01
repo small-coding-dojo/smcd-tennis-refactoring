@@ -30,12 +30,16 @@ namespace Tennis
             {
                 if (player1Points == _player2Points)
                     return "Deuce";
-                var leader = player1Points > _player2Points ? player1Name : player2Name;
                 if (PointsDifferenceIsOne())
-                    return "Advantage " + leader;
+                    return "Advantage " + LeadingPlayer();
                 else
-                    return "Win for " + leader;
+                    return "Win for " + LeadingPlayer();
             }
+        }
+
+        private string LeadingPlayer()
+        {
+            return player1Points > _player2Points ? player1Name : player2Name;
         }
 
         private bool IsNotYetEndGame()
