@@ -32,12 +32,16 @@ namespace Tennis
                 if (player1Points == _player2Points)
                     return "Deuce";
                 var leader = player1Points > _player2Points ? player1Name : player2Name;
-                var pointsDifferenceIsOne = (player1Points - _player2Points) * (player1Points - _player2Points) == 1;
-                if (pointsDifferenceIsOne)
+                if (PointsDifferenceIsOne())
                     return "Advantage " + leader;
                 else
                     return "Win for " + leader;
             }
+        }
+
+        private bool PointsDifferenceIsOne()
+        {
+            return (player1Points - _player2Points) * (player1Points - _player2Points) == 1;
         }
 
         public void WonPoint(string playerName)
