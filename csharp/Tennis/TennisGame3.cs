@@ -18,8 +18,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            var isNotYetEndgame = (player1Points < FourPoints && _player2Points < FourPoints) && (player1Points + _player2Points < SixPoints);
-            if (isNotYetEndgame)
+            if (IsNotYetEndGame())
             {
                 var score = POINTS_NAMES[player1Points];
                 if (player1Points == _player2Points)
@@ -37,6 +36,11 @@ namespace Tennis
                 else
                     return "Win for " + leader;
             }
+        }
+
+        private bool IsNotYetEndGame()
+        {
+            return (player1Points < FourPoints && _player2Points < FourPoints) && (player1Points + _player2Points < SixPoints);
         }
 
         private bool PointsDifferenceIsOne()
