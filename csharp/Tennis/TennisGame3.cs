@@ -2,7 +2,9 @@ namespace Tennis
 {
     public class TennisGame3 : ITennisGame
     {
-        private int player2Points;
+        private const int FourPoints = 4;
+        private const int SixPoints = 6;
+        private int _player2Points;
         private int player1Points;
         private string player1Name;
         private string player2Name;
@@ -16,21 +18,21 @@ namespace Tennis
 
         public string GetScore()
         {
-            var isNotYetEndgame = (player1Points < 4 && player2Points < 4) && (player1Points + player2Points < 6);
+            var isNotYetEndgame = (player1Points < FourPoints && _player2Points < FourPoints) && (player1Points + _player2Points < SixPoints);
             if (isNotYetEndgame)
             {
                 var score = POINTS_NAMES[player1Points];
-                if (player1Points == player2Points)
+                if (player1Points == _player2Points)
                     return score + "-All";
                 else
-                    return score + "-" + POINTS_NAMES[player2Points];
+                    return score + "-" + POINTS_NAMES[_player2Points];
             }
             else
             {
-                if (player1Points == player2Points)
+                if (player1Points == _player2Points)
                     return "Deuce";
-                var leader = player1Points > player2Points ? player1Name : player2Name;
-                var pointsDifferenceIsOne = (player1Points - player2Points) * (player1Points - player2Points) == 1;
+                var leader = player1Points > _player2Points ? player1Name : player2Name;
+                var pointsDifferenceIsOne = (player1Points - _player2Points) * (player1Points - _player2Points) == 1;
                 if (pointsDifferenceIsOne)
                     return "Advantage " + leader;
                 else
@@ -43,7 +45,7 @@ namespace Tennis
             if (playerName == "player1")
                 this.player1Points += 1;
             else
-                this.player2Points += 1;
+                this._player2Points += 1;
         }
 
     }
