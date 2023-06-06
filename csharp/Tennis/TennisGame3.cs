@@ -4,11 +4,17 @@ namespace Tennis
     {
         private const int FourPoints = 4;
         private const int SixPoints = 6;
+        private static readonly string ScoreSeparator = "-";
+        private static readonly string WordSeparator = " ";
+        private static readonly string Draw = "All";
+        private static readonly string Deuce = "Deuce";
+        private static readonly string Advantage = "Advantage";
+        private static readonly string WinFor = "Win for";
+        private static readonly string[] PointsNames = new[] { "Love", "Fifteen", "Thirty", "Forty" };
         private int _player2Points;
         private int _player1Points;
         private readonly string _player1Name;
         private readonly string _player2Name;
-        private static readonly string[] PointsNames = new[] { "Love", "Fifteen", "Thirty", "Forty" };
 
         public TennisGame3(string player1Name, string player2Name)
         {
@@ -23,27 +29,27 @@ namespace Tennis
                 var score = PointsNames[_player1Points];
                 if (IsDraw())
                 {
-                    return score + "-All";
+                    return score + ScoreSeparator + Draw;
                 }
                 else
                 {
-                    return score + "-" + PointsNames[_player2Points];
+                    return score + ScoreSeparator + PointsNames[_player2Points];
                 }
             }
             else
             {
                 if (IsDraw())
                 {
-                    return "Deuce";
+                    return Deuce;
                 }
 
                 if (PointsDifferenceIsOne())
                 {
-                    return "Advantage " + LeadingPlayer();
+                    return Advantage + WordSeparator + LeadingPlayer();
                 }
                 else
                 {
-                    return "Win for " + LeadingPlayer();
+                    return WinFor + WordSeparator + LeadingPlayer();
                 }
             }
         }
