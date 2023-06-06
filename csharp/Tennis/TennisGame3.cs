@@ -76,7 +76,7 @@ namespace Tennis
 
         public void WonPoint(string playerName)
         {
-            if (playerName == "player1")
+            if (playerName == _player1Name)
             {
                 _player1Points += 1;
             }

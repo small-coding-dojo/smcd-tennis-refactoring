@@ -51,6 +51,7 @@ namespace Tennis.Tests
 
     public class TennisTests
     {
+        private string player1Name = "player1";
         [Theory]
         [ClassData(typeof(TestDataGenerator))]
         public void Tennis1Test(int p1, int p2, string expected)
@@ -75,13 +76,21 @@ namespace Tennis.Tests
             CheckAllScores(game, p1, p2, expected);
         }
 
+        [Fact]
+        public void Tennis3Test_IndividualPlayerName()
+        {
+            player1Name = "Stefan";
+            var game = new TennisGame3("Stefan", "Niklas");
+            CheckAllScores(game, 2, 0, "Thirty-Love");
+        }
+
         private void CheckAllScores(ITennisGame game, int player1Score, int player2Score, string expectedScore)
         {
             var highestScore = Math.Max(player1Score, player2Score);
             for (var i = 0; i < highestScore; i++)
             {
                 if (i < player1Score)
-                    game.WonPoint("player1");
+                    game.WonPoint(player1Name);
                 if (i < player2Score)
                     game.WonPoint("player2");
             }
