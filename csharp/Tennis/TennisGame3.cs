@@ -21,7 +21,7 @@ namespace Tennis
             if (IsNotYetEndGame())
             {
                 var score = PointsNames[_player1Points];
-                if (_player1Points == _player2Points)
+                if (IsDraw())
                 {
                     return score + "-All";
                 }
@@ -32,7 +32,7 @@ namespace Tennis
             }
             else
             {
-                if (_player1Points == _player2Points)
+                if (IsDraw())
                 {
                     return "Deuce";
                 }
@@ -46,6 +46,11 @@ namespace Tennis
                     return "Win for " + LeadingPlayer();
                 }
             }
+        }
+
+        private bool IsDraw()
+        {
+            return _player1Points == _player2Points;
         }
 
         private string LeadingPlayer()
