@@ -16,15 +16,23 @@ class TennisGame1
     end
   end
   
+  def drawText
+    if (@p1points > 2)
+      "Deuce"
+    else
+      {
+        0 => "Love-All",
+        1 => "Fifteen-All",
+        2 => "Thirty-All",
+      }[@p1points]
+    end 
+  end
+
   def score
     result = ""
     tempScore=0
     if (@p1points==@p2points)
-      result = {
-          0 => "Love-All",
-          1 => "Fifteen-All",
-          2 => "Thirty-All",
-      }.fetch(@p1points, "Deuce")
+      result = drawText
     elsif (@p1points>=4 or @p2points>=4)
       minusResult = @p1points-@p2points
       if (minusResult==1)
