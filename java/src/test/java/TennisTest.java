@@ -1,9 +1,11 @@
+import smcd.game4.TennisGame4;
 import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.params.provider.MethodSource;
+import smcd.*;
 
 public class TennisTest {
 
@@ -12,8 +14,8 @@ public class TennisTest {
                 {0, 0, "Love-All"},
                 {1, 1, "Fifteen-All"},
                 {2, 2, "Thirty-All"},
-                {3, 3, "Deuce"},
-                {4, 4, "Deuce"},
+                {3, 3, "smcd.game4.tmp.Deuce"},
+                {4, 4, "smcd.game4.tmp.Deuce"},
 
                 {1, 0, "Fifteen-Love"},
                 {0, 1, "Love-Fifteen"},

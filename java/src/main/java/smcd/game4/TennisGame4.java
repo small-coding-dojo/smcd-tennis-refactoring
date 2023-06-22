@@ -1,5 +1,6 @@
-import game4.ResultProvider;
-import game4.TennisResult;
+package smcd.game4;
+
+import smcd.TennisGame;
 
 public class TennisGame4 implements TennisGame {
 
@@ -51,23 +52,6 @@ public class TennisGame4 implements TennisGame {
         return serverScore >= 3 && receiverScore >= 3 && (serverScore == receiverScore);
     }
 
-}
-
-class Deuce implements ResultProvider {
-    private final TennisGame4 game;
-    private final ResultProvider nextResult;
-
-    public Deuce(TennisGame4 game, ResultProvider nextResult) {
-        this.game = game;
-        this.nextResult = nextResult;
-    }
-
-    @Override
-    public TennisResult getResult() {
-        if (game.isDeuce())
-            return new TennisResult("Deuce", "");
-        return this.nextResult.getResult();
-    }
 }
 
 class GameServer implements ResultProvider {

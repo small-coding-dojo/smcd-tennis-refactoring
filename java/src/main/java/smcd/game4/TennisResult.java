@@ -1,4 +1,4 @@
-package game4;
+package smcd.game4;
 
 public class TennisResult {
     String serverScore;
