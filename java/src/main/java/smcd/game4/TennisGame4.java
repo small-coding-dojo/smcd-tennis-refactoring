@@ -32,6 +32,7 @@ public class TennisGame4 implements TennisGame {
         return result.format();
     }
 
+    // Hemingway Bridge: move helper methods to calling classes or something else. They shouldn't be here...
     boolean receiverHasAdvantage() {
         return receiverScore >= 4 && (receiverScore - serverScore) == 1;
     }
