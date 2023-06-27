@@ -28,23 +28,27 @@ class TennisGame1
     end 
   end
 
+  def extended_play_score(minusResult)
+    if (minusResult==1)
+      "Advantage player1"
+    elsif (minusResult ==-1)
+      "Advantage player2"
+    elsif (minusResult>=2)
+      "Win for player1"
+    else
+      "Win for player2"
+    end
+  end
+
   def score
     result = ""
     tempScore=0
-    if (@p1points==@p2points)
+    if (@p1points==@p2points) # draw
       result = drawText
-    elsif (@p1points>=4 or @p2points>=4)
+    elsif (@p1points>=4 or @p2points>=4) # handling of extended play / tie break
       minusResult = @p1points-@p2points
-      if (minusResult==1)
-        result ="Advantage player1"
-      elsif (minusResult ==-1)
-        result ="Advantage player2"
-      elsif (minusResult>=2)
-        result = "Win for player1"
-      else
-        result ="Win for player2"
-      end
-    else
+      result = extended_play_score(minusResult)
+    else # normal play with different points
       (1...3).each do |i|
         if (i==1)
           tempScore = @p1points
